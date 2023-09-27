@@ -1,0 +1,92 @@
+```javascript
+// Function to add a new task
+function addTask() {
+```
+
+- This line starts by defining a new function called `addTask`. In JavaScript, functions are blocks of reusable code that can perform specific tasks.
+
+```javascript
+    const taskInput = document.getElementById("task");
+```
+
+- Here, we create a constant variable called `taskInput`. Constants (declared with `const`) cannot be changed once defined.
+We use the `document.getElementById("task")` method to retrieve an HTML element with the `id` attribute set to "task." In JavaScript, `document` represents the webpage, 
+and `getElementById` is a method to access elements on the page.
+
+```javascript
+    const taskText = taskInput.value.trim();
+```
+
+- We create another constant called `taskText`. We set it equal to the value inside the `taskInput` element, 
+which is the text entered by the user into the input field.
+The `.trim()` function is used to remove any extra whitespace (spaces, tabs, etc.) from the beginning and end of the text.
+
+```javascript
+    if (taskText !== "") {
+```
+
+- This line checks whether `taskText` is not an empty string.
+The `if` statement is used for conditional execution. If the condition inside the parentheses is true (in this case, `taskText` is not empty),
+the code inside the curly braces will be executed.
+
+```javascript
+        const taskList = document.getElementById("task-list");
+```
+
+- Similar to what we did earlier, we retrieve an element with the `id` attribute set to "task-list." This will be the list where we display our tasks.
+
+```javascript
+        const newTaskItem = document.createElement("li");
+```
+
+- We create a new HTML list item element (`<li>`) and store it in the `newTaskItem` constant. This is where we will display the task text.
+
+```javascript
+        newTaskItem.innerText = taskText;
+```
+
+- We set the text content of the `newTaskItem` to be the value of `taskText`. In other words, we display the task text inside the newly created list item.
+
+```javascript
+        // Add a class for styling
+        newTaskItem.classList.add("task");
+```
+
+- We add a CSS class called "task" to the `newTaskItem` element. This is for styling purposes. It allows us to apply specific styles to these task items,
+like changing their appearance when they are completed.
+
+```javascript
+        // Add a click event listener to mark a task as completed
+        newTaskItem.addEventListener("click", function () {
+            this.classList.toggle("completed");
+        });
+```
+
+- We attach a "click" event listener to the `newTaskItem`. This means that when a user clicks on a task, 
+the code inside the function will run. In this case, it toggles (switches on and off) the "completed" class for the clicked task,
+which visually marks it as completed or uncompleted.
+
+```javascript
+        taskList.appendChild(newTaskItem);
+```
+
+- Finally, we append (add) the `newTaskItem` (the list item with the task text) to the `taskList` (the list where all tasks are displayed). 
+This effectively adds the new task to the list.
+
+```javascript
+        taskInput.value = "";
+```
+
+- We clear the input field by setting its value to an empty string. This way, the field is ready for the user to input their next task.
+
+```javascript
+    }
+}
+```
+
+- This closing curly brace (`}`) marks the end of the `if` block, which means that if the `if` condition (checking for non-empty `taskText`) is not met,
+the code inside the block is skipped.
+
+So, in summary, this JavaScript function adds a new task to a to-do list when called. It takes the user's input from an HTML input field, 
+creates a new list item element, associates it with a click event listener to toggle completion, and adds it to the task list. 
+It also clears the input field to prepare for the next task.
